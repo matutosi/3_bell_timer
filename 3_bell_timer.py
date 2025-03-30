@@ -2,10 +2,10 @@
 # 3分タイマー(『Pythonでつくるデスクトップアプリ』(クジラ飛行机．2024．ソシム)に掲載)を改変
 #   https://github.com/kujirahand/book-desktop-python-sample/blob/main/src/ch2/timer3min.py
 
-import datetime
-import TkEasyGUI as sg
-import pygame
 import time
+import datetime
+import pygame
+import TkEasyGUI as sg
 
 # functions
 def play_bell(n=1):
@@ -35,9 +35,9 @@ input_1 = timer_sec_1
 input_2 = timer_sec_2
 input_3 = timer_sec_3
 
-FONT_SISE_TIME = 200
-FONT_SISE_SETTING = 30
-FONT_SISE_BUTTON = 30
+FONT_SIZE_TIME = 200
+FONT_SIZE_SETTING = 30
+FONT_SIZE_BUTTON = 30
 
 # sound setting
 SOUND_FILE = '3_bell_timer_bell.mp3' # sound file for bell
@@ -46,46 +46,46 @@ pygame.mixer.music.load(SOUND_FILE)
 
 # layout
 layout = [
-    [sg.Text('00:00:00', key='-output-', font=('Helvetica', FONT_SISE_TIME))],
+    [sg.Text('00:00:00', key='-output-', font=('Helvetica', FONT_SIZE_TIME))],
     [
         sg.Push(), sg.Push(),
-        sg.Text(BELL + ' * 1'             , font=('Helvetica', FONT_SISE_SETTING), expand_x=True),
-        sg.Text('00:00:00', key='-time_1-', font=('Helvetica', FONT_SISE_SETTING), expand_x=True),
-        sg.Button('setting', key='-set_1-' , font=('Helvetica', FONT_SISE_BUTTON ), expand_x=True),
+        sg.Text(BELL + ' * 1'             , font=('Helvetica', FONT_SIZE_SETTING), expand_x=True),
+        sg.Text('00:00:00', key='-time_1-', font=('Helvetica', FONT_SIZE_SETTING), expand_x=True),
+        sg.Button('setting', key='-set_1-' , font=('Helvetica', FONT_SIZE_BUTTON ), expand_x=True),
         sg.Push(), sg.Push()
     ],
     [
         sg.Push(), sg.Push(),
-        sg.Text(BELL + ' * 2'             , font=('Helvetica', FONT_SISE_SETTING), expand_x=True),
-        sg.Text('00:00:00', key='-time_2-', font=('Helvetica', FONT_SISE_SETTING), expand_x=True),
-        sg.Button('setting', key='-set_2-' , font=('Helvetica', FONT_SISE_BUTTON ), expand_x=True),
+        sg.Text(BELL + ' * 2'             , font=('Helvetica', FONT_SIZE_SETTING), expand_x=True),
+        sg.Text('00:00:00', key='-time_2-', font=('Helvetica', FONT_SIZE_SETTING), expand_x=True),
+        sg.Button('setting', key='-set_2-' , font=('Helvetica', FONT_SIZE_BUTTON ), expand_x=True),
         sg.Push(), sg.Push()
     ],
     [
         sg.Push(), sg.Push(),
-        sg.Text(BELL + ' * 3'             , font=('Helvetica', FONT_SISE_SETTING), expand_x=True),
-        sg.Text('00:00:00', key='-time_3-', font=('Helvetica', FONT_SISE_SETTING), expand_x=True),
-        sg.Button('setting', key='-set_3-', font=('Helvetica', FONT_SISE_BUTTON ), expand_x=True),
+        sg.Text(BELL + ' * 3'             , font=('Helvetica', FONT_SIZE_SETTING), expand_x=True),
+        sg.Text('00:00:00', key='-time_3-', font=('Helvetica', FONT_SIZE_SETTING), expand_x=True),
+        sg.Button('setting', key='-set_3-', font=('Helvetica', FONT_SIZE_BUTTON ), expand_x=True),
         sg.Push(), sg.Push()
     ],
     [
         sg.Push(),
-        sg.Button('START',   key='-start-', font=('Helvetica', FONT_SISE_BUTTON), expand_x=True),
+        sg.Button('START',   key='-start-', font=('Helvetica', FONT_SIZE_BUTTON), expand_x=True),
         sg.Push(),
-        sg.Button(BELL   ,   key='-bell-' , font=('Helvetica', FONT_SISE_BUTTON), expand_x=True),
+        sg.Button(BELL   ,   key='-bell-' , font=('Helvetica', FONT_SIZE_BUTTON), expand_x=True),
         sg.Push(),
-        sg.Button('RESET',   key='-reset-', font=('Helvetica', FONT_SISE_BUTTON), expand_x=True),
+        sg.Button('RESET',   key='-reset-', font=('Helvetica', FONT_SIZE_BUTTON), expand_x=True),
         sg.Push()
     ],
     [
         sg.Push(),
-        sg.Button('STOP',     key='-stop-', font=('Helvetica', FONT_SISE_BUTTON), disabled=True),
+        sg.Button('STOP',     key='-stop-', font=('Helvetica', FONT_SIZE_BUTTON), disabled=True),
         sg.Push(),
     ]
 ]
 
 # create window
-window = sg.Window('3-BELL TIMER', layout)
+window = sg.Window('3-BELL TIMER', layout, resizable = True)
 
 # update timer_sec_1,2,3
 window['-time_1-'].update('0' + str(datetime.timedelta(seconds=timer_sec_1)))
